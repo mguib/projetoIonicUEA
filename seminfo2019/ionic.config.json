@@ -1,0 +1,7 @@
+{
+  "name": "diarioIFAM",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

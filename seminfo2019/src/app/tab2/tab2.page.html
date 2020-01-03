@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Observações
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let nota of noteService.anotacoes; let i = index" class="welcome-card">
+    <ion-toolbar color="danger">
+
+      <ion-buttons slot="end">
+        <ion-button (click)="excluir(i)">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+
+          <ion-button (click)="sendShare(nota.titulo, 
+            nota.anotacao, 'https://ionicframework.com/docs')">
+            <ion-icon slot="icon-only" name="share"></ion-icon>
+          </ion-button>
+        
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-card-header>
+      <ion-card-title>{{ nota.titulo || "Sem título"}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p *ngIf="nota.anotacao">{{ nota.anotacao || "Sem anotações"}}</p>
+      <img *ngIf="nota.foto" [src]="nota.foto" alt="" />    
+    </ion-card-content>
+    <ion-chip *ngFor="let tag of nota.tags">
+      <ion-label>{{tag}}</ion-label>
+    </ion-chip>
+  </ion-card>
+  <!-- <ion-card class="image-card">    
+    <ion-card-header>
+      <ion-card-title>{{ titulo || "Sem título da Imagem"}}</ion-card-title>      
+    </ion-card-header>
+    <img src="/assets/shapes.svg" alt="" />    
+    <ion-chip>
+      <ion-label>Metodologia Científica</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-label>Álgebra Linear</ion-label>
+    </ion-chip>
+  </ion-card>   -->
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="dark">
+    <ion-input [(ngModel)]="newTitulo" placeholder="Digite o Título"></ion-input>
+  </ion-toolbar>
+</ion-footer>
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="end">
+      <ion-button (click)="capturar()">
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
+      </ion-button>
+      <ion-button (click)="addNota()">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-textarea [(ngModel)]="newNota" autoGrow="true" placeholder="Digite aqui suas observações"></ion-textarea>
+  </ion-toolbar>
+</ion-footer>
