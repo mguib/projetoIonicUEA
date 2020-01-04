@@ -8,11 +8,10 @@
 
 <ion-content>
   <ion-card *ngFor="let nota of noteService.anotacoes; let i = index" class="welcome-card">
-    <ion-toolbar color="danger">
-
+    <ion-toolbar color="primary">
       <ion-buttons slot="end">
         <ion-button (click)="excluir(i)">
-          <ion-icon name="close"></ion-icon>
+          <ion-icon name="close-circle"></ion-icon>
         </ion-button>
 
           <ion-button (click)="sendShare(nota.titulo, 
@@ -21,13 +20,16 @@
           </ion-button>
         
       </ion-buttons>
+      
     </ion-toolbar>
     <ion-card-header>
       <ion-card-title>{{ nota.titulo || "Sem título"}}</ion-card-title>
+      
     </ion-card-header>
     <ion-card-content>
       <p *ngIf="nota.anotacao">{{ nota.anotacao || "Sem anotações"}}</p>
-      <img *ngIf="nota.foto" [src]="nota.foto" alt="" />    
+      <img *ngIf="nota.foto" [src]="nota.foto" alt="" />
+          
     </ion-card-content>
     <ion-chip *ngFor="let tag of nota.tags">
       <ion-label>{{tag}}</ion-label>
