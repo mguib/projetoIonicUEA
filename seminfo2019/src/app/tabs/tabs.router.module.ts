@@ -37,16 +37,7 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'tab4',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../share/share.module').then(m => m.SharePageModule)
-          }
-        ]
-      },
+      
       {
         path: '',
         redirectTo: '/tabs/tab1',
